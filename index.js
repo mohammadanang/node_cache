@@ -39,7 +39,7 @@ app.get("/api/search", (req, res) => {
           // save the wikipedia API response in redis store with expiration time
           client.setex(
             `search:${query}`,
-            3600,
+            3600, // (60 * 60) in seconds
             JSON.stringify({
               source: "Redis Cache",
               ...responseJson
